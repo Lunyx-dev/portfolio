@@ -53,7 +53,7 @@ export async function POST(req: NextRequest) {
     });
 
     await transporter.sendMail({
-      from: `"Portfolio Lunyx" <acc7bc001@smtp-brevo.com>`,
+      from: `"Portfolio Lunyx" <lunyx.dev@outlook.fr>`,
       to: "lunyx.dev@outlook.fr",
       replyTo: email,
       subject: `[Portfolio] Message de ${name}${company ? ` — ${company}` : ""}`,
