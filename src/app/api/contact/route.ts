@@ -1,14 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
-// Simple in-memory rate limiter (resets on server restart)
 const attempts = new Map<string, { count: number; ts: number }>();
 
 function rateLimit(ip: string): boolean {
   const now = Date.now();
-  const window = 60 * 1000; // 1 minute
+  const window = 60 * 1000;
   const max = 3;
-
   const entry = attempts.get(ip);
   if (!entry || now - entry.ts > window) {
     attempts.set(ip, { count: 1, ts: now });
@@ -37,7 +35,6 @@ export async function POST(req: NextRequest) {
     const email = sanitize(body.email ?? "");
     const message = sanitize(body.message ?? "");
 
-    // Basic validation
     if (!name || !email || !message) {
       return NextResponse.json({ error: "Champs manquants" }, { status: 400 });
     }
@@ -46,7 +43,9 @@ export async function POST(req: NextRequest) {
     }
 
     const transporter = nodemailer.createTransport({
-      service: "hotmail",
+      host: "smtp-relay.brevo.com",
+      port: 587,
+      secure: false,
       auth: {
         user: process.env.MAIL_USER,
         pass: process.env.MAIL_PASS,
@@ -54,7 +53,7 @@ export async function POST(req: NextRequest) {
     });
 
     await transporter.sendMail({
-      from: `"Portfolio Contact" <${process.env.MAIL_USER}>`,
+      from: `"Portfolio Lunyx" <acc7bc001@smtp-brevo.com>`,
       to: "lunyx.dev@outlook.fr",
       replyTo: email,
       subject: `[Portfolio] Message de ${name}${company ? ` — ${company}` : ""}`,
