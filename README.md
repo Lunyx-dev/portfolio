@@ -67,7 +67,7 @@ Vercel te donne une URL du type `portfolio-lunyx.vercel.app`.
 
 ### Étape 3 — Domaine personnalisé (optionnel)
 
-Pour avoir `lunyx.dev` à la place de l'URL Vercel :
+Pour avoir `ton nom` à la place de l'URL Vercel :
 1. Achète le domaine sur https://www.cloudflare.com/products/registrar/ (~10€/an)
 2. Dans Vercel → Settings → Domains → Add `lunyx.dev`
 3. Suis les instructions DNS de Vercel dans Cloudflare
