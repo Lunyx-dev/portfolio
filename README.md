@@ -59,7 +59,7 @@ git push -u origin main
 2. Clique "Add New Project"
 3. Importe ton repo `portfolio`
 4. Dans **Environment Variables**, ajoute :
-   - `MAIL_USER` = `lunyx.dev@outlook.fr`
+   - `MAIL_USER` = `tonemail@outlook.fr`
    - `MAIL_PASS` = ton mot de passe app Outlook
 5. Clique **Deploy**
 
